@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
 
+  def index
+    @articles = Article.all
+  end
+
 	def new
     @article = Article.new
   end
@@ -7,7 +11,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      flash[:msg] = 'Created Successfully'
+      flash[:notice] = 'Created Successfully'
       redirect_to article_path(@article)
     else
       @article.errors.full_messages
@@ -17,6 +21,22 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+  end
+
+  def edit
+    @article = Article.find(params[:id])
+    render :edit
+  end
+
+  def update
+    puts params
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      flash[:notice] = 'Updated Successfully'
+      redirect_to article_path(@article)
+    else
+      render :edit
+    end 
   end
 
   private
