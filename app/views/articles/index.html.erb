@@ -4,6 +4,7 @@
   <title>Hey these are all articles</title>
 </head>
 <body>
+  <h1> <%= link_to 'create new article', new_article_path %> </h1>
  <h1>Listing Articles</h1>
  <table>
  	<tr>
@@ -17,7 +18,8 @@
  			<td> <%= article.title %></td> 
  			<td> <%= article.description %></td>
  			<td> <%= link_to :show, article_path(article) %></td> 
- 			<td> <%= link_to :edit, edit_article_path(article) %></td> 
+ 			<td> <%= link_to :edit, edit_article_path(article) %></td>
+      <td> <%= link_to :delete, article_path(article), method: :delete, data: {confirm: "are you sure?"} %></td> 
  		</tr>
  	<% end %>
  </table>

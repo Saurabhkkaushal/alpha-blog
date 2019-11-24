@@ -4,10 +4,9 @@
 	<title></title>
 </head>
 <body>
-	<h1>Title</h1> </br>
-	<%= @article.title %> </br>
-	<h1>Description</h1> </br>
-	<%= @article.description %> </br>
+	<p>Title: <%= @article.title %> </p>
+	<p>Description <%= @article.description %> </p> </br>
 	<%= link_to :edit, edit_article_path(@article) %>
+  <%= link_to :list_articles, articles_path %>
 </body>
 </html>
